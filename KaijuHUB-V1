@@ -1,0 +1,31 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KaijuParadise/KaijuParadise/main/Script.lua"))()
+
+local gui = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
+local button = Instance.new("TextButton")
+
+frame.Parent = gui
+gui.Parent = game.Players.LocalPlayer.PlayerGui
+
+frame.BackgroundColor3 = Color3.new(0, 0, 0)
+frame.BorderColor3 = Color3.new(1, 1, 1)
+frame.Position = UDim2.new(0, 0, 0, 0)
+frame.Size = UDim2.new(0, 200, 0, 50)
+
+button.Parent = frame
+button.BackgroundColor3 = Color3.new(1, 0, 0)
+button.BorderColor3 = Color3.new(1, 1, 1)
+button.Position = UDim2.new(0, 0, 0, 0)
+button.Size = UDim2.new(0, 200, 0, 50)
+button.Text = "Kill All Furrys!"
+button.Font = Enum.Font.SourceSans
+button.FontSize = Enum.FontSize.size24
+button.TextColor3 = Color3.new(1, 1, 1)
+
+button.MouseButton1Click:Connect(function()
+    for _, player in pairs(game.Players:GetPlayers()) do
+        if player.Character and player.Character:FindFirstChild("Furry") then
+            player.Character.HumanoidRootPart:Destroy()
+        end
+    end
+end)
